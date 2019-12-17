@@ -6,6 +6,7 @@ import {
     StatusBar,
     TextInput,
     TouchableHighlight,
+    AsyncStorage,
 } from 'react-native';
 
 import {
@@ -29,14 +30,6 @@ export default class Details extends Component {
         this.setState({ name });
     }
 
-    goList() {
-        if (this.state.name) {
-            alert(this.state.name);
-        } else {
-            alert('Você não inseriu o elemento!');
-        }
-    }
-
     render() {
         return (
             <View style={styles.container}>
@@ -51,7 +44,9 @@ export default class Details extends Component {
                 />
                 <TouchableHighlight
                     style={styles.btn}
-                    onPress={() => this.goList()}
+                    onPress={() => {
+                        this.props.navigation.navigate('List', { name: this.state.name })
+                    }}
                 >
                     <Text style={styles.textButton}>Ver Lista</Text>
                 </TouchableHighlight>
