@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-    SafeAreaView,
     StyleSheet,
-    ScrollView,
     View,
     Text,
     StatusBar,
@@ -13,38 +11,25 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-export default class Lista extends Component {
+export default class List extends Component {
     static navigationOptions = {
         title: 'Listar Itens',
     };
 
     render() {
         return (
-            <>
+            <View style={styles.container}>
                 <StatusBar barStyle="dark-content" />
-                {/* <SafeAreaView>
-                    <ScrollView
-                        contentInsetAdjustmentBehavior="automatic"
-                        style={styles.scrollView}></ScrollView>
-                    <View>
-                        <Text>
-                            Lista
-                        </Text>
-                    </View>
-                </SafeAreaView> */}
-
-                <StatusBar barStyle="dark-content" />
-                <View style={styles.container}>
-                    <Text>
-                        Lista
+                <Text style={styles.empty}>
+                    Lista
                     </Text>
-                    <Button
-                        title='Cadastrar mais Produtos'
-                        onPress={() => {
-                            this.props.navigation.navigate('Home');
-                        }} />
-                </View>
-            </>
+                <Button
+                    title='Cadastrar Mais'
+                    type='outline'
+                    onPress={() => {
+                        this.props.navigation.navigation('Home');
+                    }} />
+            </View>
         )
     }
 }
@@ -57,5 +42,9 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: Colors.white,
+    },
+    empty: {
+        margin: 20,
+        fontWeight: 'bold'
     },
 });

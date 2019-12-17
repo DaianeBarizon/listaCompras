@@ -10,6 +10,8 @@ import {
 
 import Router from './Router';
 
+import { YellowBox } from 'react-native';
+
 const App = () => {
     return (
         <>
@@ -29,3 +31,6 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+YellowBox.ignoreWarnings(['Remote debugger']);

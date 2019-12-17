@@ -4,7 +4,8 @@ import {
     View,
     Text,
     StatusBar,
-    Button,
+    TextInput,
+    TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -16,22 +17,46 @@ export default class Details extends Component {
         title: 'Cadastrar Itens',
     };
 
+    constructor() {
+        super();
+
+        this.state = {
+            name: '',
+        }
+    }
+
+    changeName(name) {
+        this.setState({ name });
+    }
+
+    goList() {
+        if (this.state.name) {
+            alert(this.state.name);
+        } else {
+            alert('Você não inseriu o elemento!');
+        }
+    }
+
     render() {
         return (
-            <>
-                <StatusBar barStyle="dark-content" />
-                <View style={styles.container}>
-                    <Text>
-                        Details
-                    </Text>
-                    <Button
-                        title='Ver Lista'
-                        onPress={() => {
-                            this.props.navigation.navigate('List')
-                        }} />
-                </View>
-            </>
-        )
+            <View style={styles.container}>
+                <StatusBar barStyle='dark-content' />
+                <Text style={styles.title}>
+                    Cadastrar Itens
+                </Text>
+                <TextInput placeholder="Insira o nome do produto"
+                    style={styles.input}
+                    onChangeText={(name) => this.changeName(name)}
+                    value={this.state.name}
+                />
+                <TouchableHighlight
+                    style={styles.btn}
+                    onPress={() => this.goList()}
+                >
+                    <Text style={styles.textButton}>Ver Lista</Text>
+                </TouchableHighlight>
+            </View>
+        );
     }
 }
 
@@ -44,4 +69,22 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: Colors.white,
     },
+    title: {
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    input: {
+        borderColor: '#898989',
+        borderWidth: 2,
+        padding: 10,
+        width: 300,
+    },
+    btn: {
+        padding: 10,
+        marginTop: 20,
+        backgroundColor: '#f44336'
+    },
+    textButton: {
+        color: '#fff'
+    }
 });

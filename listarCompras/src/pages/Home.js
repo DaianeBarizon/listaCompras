@@ -21,17 +21,23 @@ export default class Home extends Component {
             <>
                 <StatusBar barStyle="dark-content" />
                 <View style={styles.container}>
-                    <Text>
+                    <Text style={styles.empty}>
                         Home
                     </Text>
                     <Button
                         title='Inserir Item'
+                        type='outline'
                         onPress={() => {
                             this.props.navigation.navigate('Details')
                         }}
-                    />
+                    >
+                        Inserir Item
+                    </Button>
+                    <View style={styles.empty}></View>
                     <Button
                         title='Listar Itens'
+                        type='outline'
+                        color='#f44336'
                         onPress={() => {
                             this.props.navigation.navigate('List')
                         }}
@@ -50,5 +56,9 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: Colors.white,
+    },
+    empty: {
+        margin: 20,
+        fontWeight: 'bold'
     },
 });
