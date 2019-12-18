@@ -17,21 +17,26 @@ export default class List extends Component {
     };
 
     render() {
-        const name = this.props.navigation.getParam('name');
+        const itens = this.props.navigation.getParam('itens', 'No itens');
+
         return (
+
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content" />
                 <Text style={styles.empty}>
                     Lista
                 </Text>
-                <Text style={styles.list}>{JSON.stringify(name)}</Text>
+                <Text style={styles.list}>{JSON.stringify(itens)}</Text>
+
                 <Button
                     title='Cadastrar Mais'
                     type='outline'
                     onPress={() => {
-                        this.props.navigation.navigate('Home');
-                    }} />
+                        this.props.navigation.navigate('Details');
+                    }}
+                />
             </View>
+
         )
     }
 }
@@ -51,6 +56,6 @@ const styles = StyleSheet.create({
     },
     list: {
         fontWeight: 'bold',
-        margin: 20,
+        margin: 5,
     },
 });
